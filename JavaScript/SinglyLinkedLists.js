@@ -237,7 +237,19 @@ class SLL {
    * Reverses linked list
    */
   reverse() {
+    let prev = null
+    let curr = this.head
+    let next = curr.next
+    while(curr) {
+      curr.next = prev
+      prev = curr
+      curr = next
+      next = curr ? curr.next : null
+    }
 
+    [this.head, this.tail] = [this.tail, this.head]
+
+    this.print()
   }
 }
 
