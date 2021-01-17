@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class SSL {
+class SLL {
   constructor() {
     this.length = 0
     this.head = null
@@ -34,9 +34,9 @@ class SSL {
     // create new node
     let node = new Node(val)
 
-    // if head & tail don't exist create it
+    // if length == 0 create first node
     // else add node after tail and set tail to new node
-    if(this.head == null) {
+    if(this.length == 0) {
       this.head = node
       this.tail = node
     } else {
@@ -54,6 +54,9 @@ class SSL {
    * Removes node from the tail of the linked list
    */
   pop() {
+    // if length == 0 return undefined
+    if(this.length == 0) return
+
     // if length == 1 set head and tail to null and reduce size
     if(this.length == 1) {
       let node = this.head
@@ -88,12 +91,38 @@ class SSL {
    */
   unshift(val) {
     // create new node
+    let node = new Node(val)
+
+    // if length == 0 create first node
+    // else add node after tail and set tail to new node
+    if(this.length == 0) {
+      this.head = node
+      this.tail = node
+    } else {
+      node.next = this.head
+      this.head = node
+    }
+
+    // increase length
+    this.length++
+
+    return this.length
   }
 
   /**
    * Removes node from the head of the linked list
    */
   shift() {
+    // if length == 0 return undefined
+    if(this.length == 0) return
 
+    // get node and remove it from head
+    let node = this.head
+    this.head = node.next
+
+    // reduce length
+    this.length--
+
+    return node.val
   }
 }
