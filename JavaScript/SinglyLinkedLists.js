@@ -235,9 +235,12 @@ class SLL {
    * Reverses linked list
    */
   reverse() {
+    // get previous, current, & next node
     let prev = null
     let curr = this.head
     let next = curr.next
+
+    // reverse pointers
     while(curr) {
       curr.next = prev
       prev = curr
@@ -245,6 +248,7 @@ class SLL {
       next = curr ? curr.next : null
     }
 
+    // swap head and tail
     [this.head, this.tail] = [this.tail, this.head]
 
     this.print()
