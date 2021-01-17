@@ -184,8 +184,6 @@ class SLL {
     // else insert node at index
     if(index == 0) {
       this.unshift(val)
-    } else if (index == this.length - 1) {
-      this.push(val)
     } else {
       // get node at previous index
       let node = this.get(index - 1)
