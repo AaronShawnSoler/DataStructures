@@ -128,7 +128,7 @@ class SLL {
 
   /**
    * Gets a node at specified index
-   * @param {*} index - Index of node
+   * @param {number} index - Index of node
    */
   get(index) {
     // if index is invalid return undefined
@@ -148,7 +148,7 @@ class SLL {
 
   /**
    * Sets val of node at specifed index
-   * @param {*} index - Index of node you want to set
+   * @param {number} index - Index of node you want to set
    * @param {*} val - Value you want to set for specified index
    */
   set(index, val) {
@@ -166,7 +166,7 @@ class SLL {
 
   /**
    * Inserts a new node at specified index
-   * @param {*} index - Index you want to insert node at
+   * @param {number} index - Index you want to insert node at
    * @param {*} val - Value of new node at specifed index
    */
   insert(index, val) {
@@ -203,10 +203,34 @@ class SLL {
 
   /**
    * Removes node at specifed index
-   * @param {*} index 
+   * @param {number} index 
    */
   remove(index) {
+    // There's nothing to remove
+    if(this.length == 0) return
 
+    // if index is invalid return undefined
+    if(index < 0 || index > this.length - 1) return
+
+    // if index is at head shift node
+    // if index is at tail pop node
+    // else remove node at index
+    if(index == 0) {
+      this.shift()
+    } else if(index == this.length - 1) {
+      this.pop()
+    } else {
+      // get node at previous index
+      let node = this.get(index - 1)
+
+      // remove node
+      node.next = node.next.next
+
+      // reduce length
+      this.length--
+    }
+
+    return this.length
   }
 
   /**
