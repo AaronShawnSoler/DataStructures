@@ -23,7 +23,7 @@ class SLL {
       curr = curr.next
     }
 
-    console.log(list. this.length)
+    console.log(list, this.length)
   }
 
   /**
@@ -124,5 +124,34 @@ class SLL {
     this.length--
 
     return node.val
+  }
+
+  /**
+   * Gets a node at specified index
+   * @param {*} index - index of node
+   */
+  get(index) {
+    // if index is invalid return undefined
+    if(index < 0 || index > this.length - 1) return
+
+    // initialize index we're currently on
+    let idx = 0
+    
+    // find node at index
+    let curr = this.head
+    while(curr) {
+      if(idx == index) return curr.val
+      curr = curr.next
+      idx++
+    }
+  }
+
+  /**
+   * Sets val of node at specifed index
+   * @param {*} index - index of node you want to set
+   * @param {*} val - val you want to set for specified index
+   */
+  set(index, val) {
+
   }
 }
