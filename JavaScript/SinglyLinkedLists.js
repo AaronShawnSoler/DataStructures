@@ -28,20 +28,20 @@ class SLL {
 
   /**
    * Adds a node to the tail of the linked list
-   * @param {*} val - The value for the node
+   * @param {*} val - The value for the new node
    */
   push(val) {
     // create new node
-    let node = new Node(val)
+    let newNode = new Node(val)
 
     // if length == 0 create first node
     // else add node after tail and set tail to new node
     if(this.length == 0) {
-      this.head = node
-      this.tail = node
+      this.head = newNode
+      this.tail = newNode
     } else {
-      this.tail.next = node
-      this.tail = node
+      this.tail.next = newNode
+      this.tail = newNode
     }
 
     // increase length
@@ -87,20 +87,20 @@ class SLL {
 
   /**
    * Adds node the head of the linked list
-   * @param {*} val 
+   * @param {*} val - The value for the new node 
    */
   unshift(val) {
     // create new node
-    let node = new Node(val)
+    let newNode = new Node(val)
 
     // if length == 0 create first node
     // else add node after tail and set tail to new node
     if(this.length == 0) {
-      this.head = node
-      this.tail = node
+      this.head = newNode
+      this.tail = newNode
     } else {
-      node.next = this.head
-      this.head = node
+      newNode.next = this.head
+      this.head = newNode
     }
 
     // increase length
@@ -128,7 +128,7 @@ class SLL {
 
   /**
    * Gets a node at specified index
-   * @param {*} index - index of node
+   * @param {*} index - Index of node
    */
   get(index) {
     // if index is invalid return undefined
@@ -148,8 +148,8 @@ class SLL {
 
   /**
    * Sets val of node at specifed index
-   * @param {*} index - index of node you want to set
-   * @param {*} val - val you want to set for specified index
+   * @param {*} index - Index of node you want to set
+   * @param {*} val - Value you want to set for specified index
    */
   set(index, val) {
     // get node at index
@@ -166,11 +166,39 @@ class SLL {
 
   /**
    * Inserts a new node at specified index
-   * @param {*} index - index you want to insert node at
-   * @param {*} val - value of new node at specifed index
+   * @param {*} index - Index you want to insert node at
+   * @param {*} val - Value of new node at specifed index
    */
   insert(index, val) {
+    // There's no pre-exsisting index
+    if(this.length == 0) return
 
+    // if index is invalid return undefined
+    if(index < 0 || index > this.length - 1) return
+
+    // create new node
+    let newNode = new Node(val)
+
+    // if index is at head insert at head using unshift
+    // if index is at tail insert at tail using push
+    // else insert node at index
+    if(index == 0) {
+      this.unshift(val)
+    } else if (index == this.length - 1) {
+      this.push(val)
+    } else {
+      // get node at previous index
+      let node = this.get(index - 1)
+
+      // insert node
+      newNode.next = node.next
+      node.next = newNode
+
+      // increase length
+      this.length++
+    }
+
+    return this.length
   }
 
   /**
@@ -188,3 +216,9 @@ class SLL {
 
   }
 }
+
+let sll = new SLL()
+
+sll.push(1)
+sll.push(2)
+sll.push(3)
