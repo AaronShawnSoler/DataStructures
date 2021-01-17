@@ -140,7 +140,7 @@ class SLL {
     // find node at index
     let curr = this.head
     while(curr) {
-      if(idx == index) return curr.val
+      if(idx == index) return curr
       curr = curr.next
       idx++
     }
@@ -152,6 +152,15 @@ class SLL {
    * @param {*} val - val you want to set for specified index
    */
   set(index, val) {
+    // get node at index
+    let node = this.get(index)
 
+    // if node is undefined return false
+    if(!node) return false
+
+    // set value of node
+    node.val = val
+
+    return true
   }
 }
