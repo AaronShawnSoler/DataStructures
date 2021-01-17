@@ -163,4 +163,28 @@ class SLL {
 
     return true
   }
+
+  /**
+   * Inserts a new node at specified index
+   * @param {*} index - index you want to insert node at
+   * @param {*} val - value of new node at specifed index
+   */
+  insert(index, val) {
+
+  }
+
+  /**
+   * Removes node at specifed index
+   * @param {*} index 
+   */
+  remove(index) {
+
+  }
+
+  /**
+   * Reverses linked list
+   */
+  reverse() {
+
+  }
 }
