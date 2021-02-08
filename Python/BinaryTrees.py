@@ -27,3 +27,27 @@ class BinaryTree:
                     else:
                         curr.left = node
                         node = None
+
+    def dfsPreOrder(self, root):
+        if not root:
+            return
+
+        print(root.val)
+        self.dfsPreOrder(root.left)
+        self.dfsPreOrder(root.right)
+
+    def dfsInOrder(self, root):
+        if not root:
+            return
+
+        self.dfsPreOrder(root.left)
+        print(root.val)
+        self.dfsPreOrder(root.right)
+
+    def dfsPostOrder(self, root):
+        if not root:
+            return
+
+        self.dfsPreOrder(root.left)
+        self.dfsPreOrder(root.right)
+        print(root.val)
