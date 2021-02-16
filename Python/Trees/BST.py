@@ -8,7 +8,7 @@ class Node:
         return f"{self.val}"
 
 
-class BinaryTree:
+class BST:
     def __init__(self):
         self.root = None
 
@@ -48,20 +48,3 @@ class BinaryTree:
             return [root.val]
 
         return self.postOrder(root.left) + self.postOrder(root.right) + [root.val]
-
-
-BT = BinaryTree()
-
-BT.insert(Node(6))
-
-BT.insert(Node(4))
-BT.insert(Node(8))
-
-BT.insert(Node(3))
-BT.insert(Node(5))
-BT.insert(Node(7))
-BT.insert(Node(9))
-
-print(BT.preOrder(BT.root))
-print(BT.inOrder(BT.root))
-print(BT.postOrder(BT.root))
