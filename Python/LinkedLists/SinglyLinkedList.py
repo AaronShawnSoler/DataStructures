@@ -110,11 +110,27 @@ class SLL:
             node.next = prev.next
             prev.next = node
 
+        self.length += 1
+
         return
 
     # removes node at index
-    def remove(self):
-        return
+    def remove(self, index):
+        if index < 0 or index > self.length - 1:
+            return
+
+        node = self.get(index)
+        if index == 0:
+            node = self.shift()
+        elif index == self.length - 1:
+            node = self.pop()
+        else:
+            prev = self.get(index - 1)
+            prev.next = prev.next.next
+
+        self.length -= 1
+
+        return node
 
     # reverses the list
     def reverse(self):
@@ -130,4 +146,7 @@ sll.show()
 sll.insert(1, 30)
 sll.show()
 sll.insert(1, 40)
+sll.show()
+
+sll.remove(0)
 sll.show()
