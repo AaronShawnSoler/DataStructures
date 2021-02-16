@@ -25,6 +25,9 @@ class SLL:
         else:
             self.tail.next = node
             self.tail = self.tail.next
+
+        self.length += 1
+
         return
 
     # removes node from the tail
@@ -41,23 +44,52 @@ class SLL:
         prev.next = None
         self.tail = prev
 
+        self.length -= 1
+
         return curr
 
     # adds node to the head
     def unshift(self, val):
         node = Node(val)
+        if not self.head:
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head = node
+
+        self.length += 1
+
         return
 
     # removes node from the head
     def shift(self):
-        return
+        if not self.head:
+            return
+
+        node = self.head
+        self.head = node.next
+
+        self.length -= 1
+
+        return node
 
     # gets node at index
-    def get(self):
-        return
+    def get(self, index):
+        if index < 0 or index > self.length - 1:
+            return
+
+        i = 0
+        curr = self.head
+        while not i == index:
+            curr = curr.next
+            i += 1
+
+        return curr
 
     # updates value of node at index
-    def put(self):
+    def put(self, index, val):
+
         return
 
     # inserts node at index
@@ -79,5 +111,4 @@ sll.push(10)
 sll.push(20)
 sll.show()
 
-sll.pop()
-sll.show()
+sll.get(3)
