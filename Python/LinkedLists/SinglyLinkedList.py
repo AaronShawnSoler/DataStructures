@@ -98,7 +98,18 @@ class SLL:
         return
 
     # inserts node at index
-    def insert(self):
+    def insert(self, index, val):
+        if index < 0 or index > self.length - 1:
+            return
+
+        if index == 0:
+            self.unshift(val)
+        else:
+            node = Node(val)
+            prev = self.get(index - 1)
+            node.next = prev.next
+            prev.next = node
+
         return
 
     # removes node at index
@@ -116,4 +127,7 @@ sll.push(10)
 sll.push(20)
 sll.show()
 
-sll.get(3)
+sll.insert(1, 30)
+sll.show()
+sll.insert(1, 40)
+sll.show()
