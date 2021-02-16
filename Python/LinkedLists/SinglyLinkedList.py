@@ -89,6 +89,11 @@ class SLL:
 
     # updates value of node at index
     def put(self, index, val):
+        if index < 0 or index > self.length - 1:
+            return
+
+        node = self.get(index)
+        node.val = val
 
         return
 
