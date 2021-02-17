@@ -134,6 +134,16 @@ class SLL:
 
     # reverses the list
     def reverse(self):
+        prev = None
+        curr = self.head
+        after = curr.next
+        while curr:
+            curr.next = prev
+            prev = curr
+            curr = after
+            after = curr.next if curr else None
+
+        self.head, self.tail = self.tail, self.head
         return
 
 
@@ -148,5 +158,5 @@ sll.show()
 sll.insert(1, 40)
 sll.show()
 
-sll.remove(0)
+sll.reverse()
 sll.show()
