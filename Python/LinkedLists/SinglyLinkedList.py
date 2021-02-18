@@ -145,18 +145,3 @@ class SLL:
 
         self.head, self.tail = self.tail, self.head
         return
-
-
-sll = SLL()
-
-sll.push(10)
-sll.push(20)
-sll.show()
-
-sll.insert(1, 30)
-sll.show()
-sll.insert(1, 40)
-sll.show()
-
-sll.reverse()
-sll.show()
