@@ -31,7 +31,19 @@ class DLL:
 
     # removes node from the tail
     def pop(self):
-        return
+        if not self.tail:
+            return
+
+        node = self.tail
+
+        self.tail = self.tail.prev
+        self.tail.next = None
+        if not self.tail:
+            self.head = None
+
+        self.length -= 1
+
+        return node
 
     # adds node to the head
     def unshift(self, val):
