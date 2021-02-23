@@ -5,7 +5,7 @@ class Node:
         self.next = None
 
     def __repr__(self):
-        return f"{'None <-' if not self.prev else ''} {self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
+        return f"{'None <- ' if not self.prev else ''}{self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
 
 
 class DLL:
@@ -66,11 +66,40 @@ class DLL:
 
     # removes node from the head
     def shift(self):
-        return
+        if not self.head:
+            return
+
+        node = self.head
+
+        self.head = self.head.next
+        self.head.prev = None
+        if not self.head:
+            self.tail = None
+
+        self.length -= 1
+
+        return node
 
     # gets node at index
     def get(self, index):
-        return
+        if index < 0 or index > self.length - 1:
+            return
+
+        if index <= (self.length - 1) // 2:
+            i = 0
+            curr = self.head
+            while not i == index:
+                curr = curr.next
+                i += 1
+        else:
+            i = self.length - 1
+            curr = self.tail
+            while not i == index:
+                curr = curr.prev
+                i -= 1
+
+        print(curr.val)
+        return curr
 
     # updates value of node at index
     def put(self, index, val):
@@ -99,3 +128,14 @@ dll.unshift(2)
 dll.unshift(3)
 
 dll.show()
+
+dll.pop()
+dll.show()
+
+dll.shift()
+dll.show()
+
+dll.get(0)
+dll.get(1)
+dll.get(2)
+dll.get(3)
