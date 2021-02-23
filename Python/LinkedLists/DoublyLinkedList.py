@@ -5,7 +5,7 @@ class Node:
         self.next = None
 
     def __repr__(self):
-        return f"{self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
+        return f"{'None <-' if not self.prev else f'{self.prev.val} <-'} {self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
 
 
 class DLL:
