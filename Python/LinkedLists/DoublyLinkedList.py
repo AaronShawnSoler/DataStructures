@@ -103,10 +103,31 @@ class DLL:
 
     # updates value of node at index
     def put(self, index, val):
+        if index < 0 or index > self.length - 1:
+            return
+
+        node = self.get(index)
+        node.val = val
+
         return
 
     # inserts node at index
     def insert(self, index, val):
+        if index < 0 or index > self.length - 1:
+            return
+
+        if index == 0:
+            self.unshift(val)
+        else:
+            node = Node(val)
+            prev = self.get(index - 1)
+            node.prev = prev
+            node.next = prev.next
+            if prev.next:
+                prev.next.prev = node
+            prev.next = node
+            self.length += 1
+
         return
 
     # removes node at index
@@ -139,3 +160,8 @@ dll.get(0)
 dll.get(1)
 dll.get(2)
 dll.get(3)
+
+dll.insert(2, 54)
+dll.insert(0, 45)
+dll.insert(5, 100)
+dll.show()
