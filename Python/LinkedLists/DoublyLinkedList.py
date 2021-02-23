@@ -16,6 +16,17 @@ class DLL:
 
     # adds node to the tail
     def push(self, val):
+        node = Node(val)
+        if not self.tail:
+            self.tail = node
+            self.head = node
+        else:
+            self.tail.next = node
+            node.prev = self.tail
+            self.tail = self.tail.next
+
+        self.length += 1
+
         return
 
     # removes node from the tail
