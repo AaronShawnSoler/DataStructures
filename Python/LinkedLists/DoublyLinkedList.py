@@ -98,7 +98,6 @@ class DLL:
                 curr = curr.prev
                 i -= 1
 
-        print(curr.val)
         return curr
 
     # updates value of node at index
@@ -132,7 +131,24 @@ class DLL:
 
     # removes node at index
     def remove(self, index):
-        return
+        if index < 0 or index > self.length - 1:
+            return
+
+        node = self.get(index)
+        if index == 0:
+            node = self.shift()
+        elif index == self.length - 1:
+            node = self.pop()
+        else:
+            prev = self.get(index - 1)
+            after = self.get(index + 1)
+            prev.next = prev.next.next
+            after.prev = after.prev.prev
+
+        self.length -= 1
+
+        print(node.val)
+        return node
 
     # reverses the list
     def reverse(self):
@@ -164,4 +180,11 @@ dll.get(3)
 dll.insert(2, 54)
 dll.insert(0, 45)
 dll.insert(5, 100)
+dll.show()
+
+dll.remove(5)
+dll.show()
+dll.remove(5)
+dll.show()
+dll.remove(0)
 dll.show()
