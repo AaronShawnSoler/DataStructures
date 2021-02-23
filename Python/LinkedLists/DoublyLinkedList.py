@@ -5,7 +5,7 @@ class Node:
         self.next = None
 
     def __repr__(self):
-        return f"{'None <-' if not self.prev else f'{self.prev.val} <-'} {self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
+        return f"{'None <-' if not self.prev else ''} {self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
 
 
 class DLL:
@@ -24,8 +24,8 @@ class DLL:
             self.tail = node
             self.head = node
         else:
-            self.tail.next = node
             node.prev = self.tail
+            self.tail.next = node
             self.tail = self.tail.next
 
         self.length += 1
@@ -51,6 +51,17 @@ class DLL:
     # adds node to the head
     def unshift(self, val):
         node = Node(val)
+
+        if not self.head:
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head.prev = node
+            self.head = self.head.prev
+
+        self.length += 1
+
         return
 
     # removes node from the head
@@ -83,5 +94,8 @@ dll = DLL()
 dll.push(10)
 dll.push(20)
 dll.push(30)
+dll.unshift(1)
+dll.unshift(2)
+dll.unshift(3)
 
 dll.show()
