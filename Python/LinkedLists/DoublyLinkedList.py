@@ -4,6 +4,9 @@ class Node:
         self.prev = None
         self.next = None
 
+    def __repr__(self):
+        return f"{self.val} -> {'<-' if self.next and self.next.prev else ''} {self.next}"
+
 
 class DLL:
     def __init__(self):
@@ -12,7 +15,7 @@ class DLL:
         self.tail = None
 
     def show(self):
-        return
+        print(self.head)
 
     # adds node to the tail
     def push(self, val):
@@ -47,6 +50,7 @@ class DLL:
 
     # adds node to the head
     def unshift(self, val):
+        node = Node(val)
         return
 
     # removes node from the head
@@ -72,3 +76,12 @@ class DLL:
     # reverses the list
     def reverse(self):
         return
+
+
+dll = DLL()
+
+dll.push(10)
+dll.push(20)
+dll.push(30)
+
+dll.show()
