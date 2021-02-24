@@ -73,8 +73,9 @@ class DLL:
         node = self.head
 
         self.head = self.head.next
-        self.head.prev = None
-        if not self.head:
+        if self.head:
+            self.head.prev = None
+        else:
             self.tail = None
 
         self.length -= 1
