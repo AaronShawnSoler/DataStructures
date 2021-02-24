@@ -40,8 +40,9 @@ class DLL:
         node = self.tail
 
         self.tail = self.tail.prev
-        self.tail.next = None
-        if not self.tail:
+        if self.tail:
+            self.tail.next = None
+        else:
             self.head = None
 
         self.length -= 1
@@ -153,38 +154,3 @@ class DLL:
     # reverses the list
     def reverse(self):
         return
-
-
-dll = DLL()
-
-dll.push(10)
-dll.push(20)
-dll.push(30)
-dll.unshift(1)
-dll.unshift(2)
-dll.unshift(3)
-
-dll.show()
-
-dll.pop()
-dll.show()
-
-dll.shift()
-dll.show()
-
-dll.get(0)
-dll.get(1)
-dll.get(2)
-dll.get(3)
-
-dll.insert(2, 54)
-dll.insert(0, 45)
-dll.insert(5, 100)
-dll.show()
-
-dll.remove(5)
-dll.show()
-dll.remove(5)
-dll.show()
-dll.remove(0)
-dll.show()
