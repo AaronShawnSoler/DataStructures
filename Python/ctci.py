@@ -4,6 +4,21 @@
 ####################################
 """
 # Is Unique
+def isUnique(string):
+  if len(string) > 128:
+    return False
+
+  chars = [False] * 128
+
+  for char in string:
+    if chars[ord(char)] == False:
+      chars[ord(char)] = True
+    else:
+      return False
+  return True
+
+print(isUnique('Aaron Soler'))
+
 # Check Permutation
 # URLify
 # Palindrome Premutation
