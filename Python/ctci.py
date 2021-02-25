@@ -69,11 +69,25 @@ def oneAway(s1: str, s2: str) -> bool:
     else:
       edits += 1
 
-  print(True if edits < 3 else False)
   return True if edits < 3 else False
 
 
 # String Compression
+def stringCompression(s: str) -> str:
+  compress = ''
+  count = 0
+
+  for index, char in enumerate(s):
+    count += 1
+
+    if index + 1 > len(s) - 1 or s[index + 1] != char:
+      compress += f"{char}{count}"
+      count = 0
+
+  print(compress if len(compress) < len(s) else s)
+  return compress if len(compress) < len(s) else s
+
+stringCompression('aabcccccaaa')
 # Rotate Matrix
 # Zero Matrix
 # String Rotation
