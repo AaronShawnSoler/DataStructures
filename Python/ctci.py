@@ -20,22 +20,60 @@ def isUnique(string: str) -> bool:
       return False
   return True
 
+
 # Check Permutation
-def checkInclusion(self, s1: str, s2: str) -> bool:
-        # sort s1 chars in alphabetical order
-        s1 = ''.join(sorted(s1))
-        
-        # sort each word with a window the length of s1
-        for index in range(len(s2) + 1 - len(s1)):
-            word = s2[index:index + len(s1)]
-            word = ''.join(sorted(word))
-            if word == s1:
-                return True
-        
-        return False
+def checkPermutation(s1: str, s2: str) -> bool:
+  # sort s1 chars in alphabetical order
+  s1 = ''.join(sorted(s1))
+  
+  # sort each word with a window the length of s1
+  for index in range(len(s2) + 1 - len(s1)):
+    word = s2[index:index + len(s1)]
+    word = ''.join(sorted(word))
+    if word == s1:
+      return True
+  
+  return False
+
+
 # URLify
-# Palindrome Premutation
+def URLify(s: str, length: int):
+  s = s.strip()
+  s = list(s)
+  for index in range(len(s)):
+    if s[index] == ' ':
+      s[index] = '%20'
+  s = ''.join(s)
+  print(s)
+  return s
+
+
+# Palindrome Permutation
+def palindromePermutation(s: str) -> bool:
+
+  return False
+
+
 # One Away
+def oneAway(s1: str, s2: str) -> bool:
+  freq = {}
+  for char in s2:
+    freq[char] = 1 if not char in freq.keys() else freq[char] + 1
+  
+  edits = 0
+  for char in s1:
+    if char in freq.keys():
+      if freq[char] == 0:
+        edits += 1
+      else:
+        freq[char] -= 1
+    else:
+      edits += 1
+
+  print(True if edits < 3 else False)
+  return True if edits < 3 else False
+
+
 # String Compression
 # Rotate Matrix
 # Zero Matrix
