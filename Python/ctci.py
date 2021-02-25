@@ -4,12 +4,15 @@
 ####################################
 """
 # Is Unique
-def isUnique(string):
+def isUnique(string: str) -> bool:
+  # if length is greater than unique chars in ASCII return false
   if len(string) > 128:
     return False
 
+  # ASCII has 128 unique chars
   chars = [False] * 128
 
+  # if we come across a char we've already seen return false
   for char in string:
     if chars[ord(char)] == False:
       chars[ord(char)] = True
@@ -17,9 +20,19 @@ def isUnique(string):
       return False
   return True
 
-print(isUnique('Aaron Soler'))
-
 # Check Permutation
+def checkInclusion(self, s1: str, s2: str) -> bool:
+        # sort s1 chars in alphabetical order
+        s1 = ''.join(sorted(s1))
+        
+        # sort each word with a window the length of s1
+        for index in range(len(s2) + 1 - len(s1)):
+            word = s2[index:index + len(s1)]
+            word = ''.join(sorted(word))
+            if word == s1:
+                return True
+        
+        return False
 # URLify
 # Palindrome Premutation
 # One Away
