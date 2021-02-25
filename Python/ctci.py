@@ -44,7 +44,6 @@ def URLify(s: str, length: int):
     if s[index] == ' ':
       s[index] = '%20'
   s = ''.join(s)
-  print(s)
   return s
 
 
