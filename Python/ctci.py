@@ -1,3 +1,5 @@
+import math
+
 """
 ####################################
 1 Arrays and Strings
@@ -84,11 +86,19 @@ def stringCompression(s: str) -> str:
       compress += f"{char}{count}"
       count = 0
 
-  print(compress if len(compress) < len(s) else s)
   return compress if len(compress) < len(s) else s
 
-stringCompression('aabcccccaaa')
 # Rotate Matrix
+def rotateMatrix(matrix: list) -> list:
+  for row in range(len(matrix) // 2):
+    for col in range(math.ceil(len(matrix[row]) / 2)):
+      temp = matrix[row][col]
+      matrix[row][col] = matrix[len(matrix) - 1 - col][row]
+      matrix[len(matrix) - 1 - col][row] = matrix[len(matrix) - 1 - row][len(matrix) - 1 - col]
+      matrix[len(matrix) - 1 - row][len(matrix) - 1 - col] = matrix[col][len(matrix) - 1 - row]
+      matrix[col][len(matrix) - 1 - row] = temp
+
+
 # Zero Matrix
 # String Rotation
 
